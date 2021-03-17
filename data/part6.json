@@ -1,0 +1,187 @@
+[
+  {
+    "tag": ["water", "health"],
+    "question": "drink water / good health",
+    "answer": "I think that drinking enough water is good for health."
+  },
+  {
+    "tag": ["in-my-opinion"],
+    "question": "bonus good / outstanding employee",
+    "answer": "In my opinion, bonuses are effective rewards for outstanding employees."
+  },
+  {
+    "tag": ["i-agree"],
+    "question": "creativity / painter",
+    "answer": "I agree that creativity is the most important quality for a painter."
+  },
+  {
+    "tag": ["i-agree"],
+    "question": "children / advice / parent",
+    "answer": "I agree that children need to get advice from their parents."
+  },
+  {
+    "tag": ["i-agree"],
+    "question": "students / mobile phones / classroom",
+    "answer": "I disagree that students shouldn't be allowed to have mobile phones in the classroom."
+  },
+  {
+    "tag": ["i-agree"],
+    "question": "studying abroad / young age",
+    "answer": "I disagree that studying abroad at a young age is good."
+  },
+  {
+    "tag": ["i-agree", "cloth"],
+    "question": "buying cloth / shop",
+    "answer": "I prefer buying my clothes in a shop to shopping on the Internet."
+  },
+  {
+    "tag": ["prefer", "working"],
+    "question": "working at office / working at home",
+    "answer": "I prefer working at an office rather than working at home."
+  },
+  {
+    "tag": ["better", "learn", "book"],
+    "question": "learn from a teacher / learn in a book",
+    "answer": "It is better to learn from a teacher than to learn something in a book."
+  },
+  {
+    "tag": ["better", "attend lecture", "study at home"],
+    "question": "learn from a teacher / learn in a book",
+    "answer": "It is better to attend lectures than to study alone at home."
+  },
+  {
+    "tag": ["think", "small famliy", "large family"],
+    "question": "small family / large family",
+    "answer": "I think having a small family is better than having a large family."
+  },
+  {
+    "tag": ["living alone", "roommates"],
+    "question": "living alone / rommates",
+    "answer": "I believe living alone is better than living with roommates."
+  },
+  {
+    "tag": ["tution", "expensive"],
+    "question": "tuition fee / expensive",
+    "answer": "That’s because tuition fee is too expensive."
+  },
+  {
+    "tag": ["learn", "mistakes"],
+    "question": "learn / mistakes",
+    "answer": "The reason is that people learn by making mistakes."
+  },
+  {
+    "tag": ["save", "time"],
+    "question": "save commuting time",
+    "answer": "The reason is that you can save commuting time."
+  },
+  {
+    "tag": ["bicycle", "environment"],
+    "question": "riding bicycle / good environment",
+    "answer": "First of all, riding a bicycle is good for the environment."
+  },
+  {
+    "tag": ["education", "students"],
+    "question": "quality education / student",
+    "answer": "First of all, providing quality education for students is important."
+  },
+  {
+    "tag": ["leader", "personality"],
+    "question": "good leader / attractive personality",
+    "answer": "Secondly, a good leader must have an attractive personality."
+  },
+  {
+    "tag": ["health"],
+    "question": "exercising / health",
+    "answer": "Secondly, exercising regularly is good for health."
+  },
+  {
+    "tag": ["time"],
+    "question": "time / TV at home",
+    "answer": "Finally, people don’t have enough time to watch TV at home."
+  },
+  {
+    "tag": ["lecutres"],
+    "question": "reviewing / lectures",
+    "answer": "Finally, reviewing is important to fully understand the lectures."
+  },
+  {
+    "tag": ["child", "bed"],
+    "question": "child / bed / ten o'clock",
+    "answer": "For example, when I was a child I always went to bed by ten o’clock."
+  },
+  {
+    "tag": ["visited"],
+    "question": "Holland / cool",
+    "answer": "For example, I recently visited Holland and it was very cool!"
+  },
+  {
+    "tag": ["people"],
+    "question": "people need / relax",
+    "answer": "To be specific, people need a place to relax."
+  },
+  {
+    "tag": ["bike"],
+    "question": "impressive / bikes / cars",
+    "answer": "To be specific, it was impressive that there were more bikes than cars."
+  },
+  {
+    "tag": ["fine", "recycling"],
+    "question": "people / fine / recycling",
+    "answer": "I think people should pay a fine for not recycling."
+  },
+  {
+    "tag": ["food"],
+    "question": "food / cook home / restaurants",
+    "answer": "Food cooked at home is better than food served at restaurants."
+  },
+  {
+    "tag": [],
+    "question": "education / free",
+    "answer": "In my opinion, all education should be free."
+  },
+  {
+    "tag": [],
+    "question": "public transportation / car",
+    "answer": "I prefer taking public transportation to driving a car."
+  },
+  {
+    "tag": [],
+    "question": "children and senior citizens / public transportation",
+    "answer": "I disagree children and senior citizens shouldn't have to pay to use public transportation."
+  },
+  {
+    "tag": [],
+    "question": "people / equally / benefits / young or old",
+    "answer": "First of all, all people should be treated equally. A person should not receive benefits simply because they are young or old."
+  },
+  {
+    "tag": [],
+    "question": "save money / public transportation",
+    "answer": "I can save money by using public transportation."
+  },
+  {
+    "tag": [],
+    "question": "online shopping / save money",
+    "answer": "Online shopping helps me save a lot of money."
+  },
+  {
+    "tag": [],
+    "question": "exercising regularly / healthy",
+    "answer": "Exercising regularly helps me stay healthy."
+  },
+  {
+    "tag": [],
+    "question": "healthy / vitamin C / every day",
+    "answer": "I can stay healthy by taking vitamin C every day."
+  },
+  {
+    "tag": [],
+    "question": "traveling overseas / new experiences",
+    "answer": "Traveling overseas gives people a chance to have new experiences."
+  },
+  {
+    "tag": [],
+    "question": "experience / broad / perspective",
+    "answer": "Having a new experience is important to broaden my perspectives."
+  }
+]

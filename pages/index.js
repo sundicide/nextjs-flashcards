@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import React from 'react';
 import styles from '../styles/Home.module.css'
+import datas from "../data/part6.json"
 
 class Problems {
   tag = []
@@ -13,26 +14,17 @@ class Problems {
   }
 }
 
-const problemsList = [
-  new Problems(['water', 'health'], 'drink, water / good, health', 'I think that drinking enough water is good for health.'),
-  new Problems(['in-my-opinion'], 'bonus good / outstanding employee', 'In my opinion, bonuses are effective rewards for outstanding employees.'),
-  new Problems(['i-agree'], 'creativity / painter', 'I agree that creativity is the most important quality for a painter.'),
-  new Problems(['i-agree'], 'children / advice / parent', 'I agree that children need to get advice from their parents.'),
-  new Problems(['i-agree'], 'students / mobile phones / classroom', "I disagree that students shouldn't be allowed to have mobile phones in the classroom."),
-  new Problems(['i-agree'], 'studying abroad / young age', "I disagree that studying abroad at a young age is good."),
-  new Problems(['i-agree', 'cloth'], 'buying cloth / shop', "I prefer buying my clothes in a shop to shopping on the Internet."),
-]
-
 export default function Home() {
-  const [localProblemLists, setLocalProblemLists] = React.useState([...problemsList]);
-  const getTags = () => problemsList.reduce((accu, curr) => {
+  const [localProblemLists, setLocalProblemLists] = React.useState([...datas]);
+
+  const getTags = () => datas.reduce((accu, curr) => {
     curr.tag.forEach(t => accu.add(t))
     return accu
   }, new Set())
 
 
   const doInit = () => {
-    setLocalProblemLists(problemsList)
+    setLocalProblemLists(datas)
   }
   const doRaffle = () => {
     let copyProblemList = [...localProblemLists]
@@ -44,7 +36,7 @@ export default function Home() {
     setLocalProblemLists(newProblems)
   }
   const doSearch = (e) => {
-    const newList = problemsList.filter(d => d.answer.includes(e.target.value) )
+    const newList = datas.filter(d => d.answer.includes(e.target.value) )
     setLocalProblemLists(newList)
   }
   const handleKeyDown = (e) => {
@@ -56,7 +48,7 @@ export default function Home() {
     setLocalProblemLists(newProblems)
   }
   const filterKey = (e) => {
-    const newProblems = [...problemsList]
+    const newProblems = [...datas]
     setLocalProblemLists(newProblems.filter(d => d.tag.includes(e.target.dataset.value)));
   }
   return (
