@@ -81,9 +81,7 @@ export default function Home() {
               <div>
                 tags: {d.tag.toString()}
               </div>
-              <a href="#">
-                <h3>{d.question}</h3>
-              </a>
+              <h3 className={styles.question}>{d.question}</h3>
               <p className={styles.answer}>{d.answer}</p>
             </div>
           ))}

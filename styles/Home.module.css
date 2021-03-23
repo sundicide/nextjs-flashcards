@@ -119,6 +119,10 @@ section.searches {
   min-height: 15rem;
 }
 
+.card .question {
+  cursor: pointer;
+}
+
 .card .answer {
   color: white;
 }
