@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import React from 'react';
 import styles from '../styles/Home.module.css'
-import datas from "../data/part6.json"
+import part6Datas from "../data/part6.json"
+import part5Datas from "../data/part5.json"
 
 class Problems {
   tag = []
@@ -15,18 +16,33 @@ class Problems {
 }
 
 export default function Home() {
-  const [localProblemLists, setLocalProblemLists] = React.useState([...datas]);
+  const [localProblemLists, setLocalProblemLists] = React.useState([...part6Datas])
+  const [partNumber, setPartNumber] = React.useState(6)
+  const [searchText, setSearchText] = React.useState("")
 
-  const getTags = () => datas.reduce((accu, curr) => {
+  React.useEffect(() => {
+    if (partNumber === 5) {
+      setLocalProblemLists(part5Datas)
+    } else if (partNumber === 6) {
+      setLocalProblemLists(part6Datas)
+    }
+  }, [partNumber])
+
+  const getDatas = () => localProblemLists.filter(d => d.answer.toLowerCase().includes(searchText.toLowerCase()) || d.question.toLowerCase().includes(searchText.toLowerCase()))
+
+  const getTags = () => localProblemLists.reduce((accu, curr) => {
     curr.tag.forEach(t => accu.add(t))
     return accu
   }, new Set())
 
+  const changePart = (partNumber) => {
+    setPartNumber(partNumber)
+  }
 
   const doInit = () => {
-    setLocalProblemLists(datas)
+    setPartNumber(partNumber)
   }
-  const doRaffle = () => {
+  const doShuffle = () => {
     let copyProblemList = [...localProblemLists]
     const newProblems = []
     for (let i = 0; i < localProblemLists.length; i++) {
@@ -36,8 +52,7 @@ export default function Home() {
     setLocalProblemLists(newProblems)
   }
   const doSearch = (e) => {
-    const newList = datas.filter(d => d.answer.includes(e.target.value) )
-    setLocalProblemLists(newList)
+    setSearchText(e.target.value)
   }
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {doSearch(e)}
@@ -48,7 +63,7 @@ export default function Home() {
     setLocalProblemLists(newProblems)
   }
   const filterKey = (e) => {
-    const newProblems = [...datas]
+    const newProblems = [...localProblemLists]
     setLocalProblemLists(newProblems.filter(d => d.tag.includes(e.target.dataset.value)));
   }
   return (
@@ -61,7 +76,11 @@ export default function Home() {
       <main className={styles.main}>
         <div>
           <button onClick={doInit}>Init</button>
-          <button onClick={doRaffle}>Raffle</button>
+          <button onClick={doShuffle}>Shuffle</button>
+        </div>
+        <div>
+          <button onClick={e => changePart(5)}>Part5</button>
+          <button onClick={e => changePart(6)}>Part6</button>
         </div>
         <section className={styles.searches}>
           <input onChange={doSearch} type="text"/>
@@ -75,7 +94,7 @@ export default function Home() {
           ))}
         </section>
         <div className={styles.grid}>
-          {localProblemLists.map((d, i) => (
+          {getDatas().map((d, i) => (
             <div key={i} className={styles.card}>
               <button onClick={() => hideElem(i)}>hide</button>
               <div>
