@@ -1,0 +1,25 @@
+.root{
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+.wrapper {
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+}
+.wrapper > *:last-child,
+.wrapper > *:first-child {
+  margin: 1rem 0;
+}
+.icon {
+  cursor: pointer;
+}
+.inputWrapper {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  margin: 0.5rem 0;
+}
