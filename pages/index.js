@@ -1,122 +1,29 @@
-import Head from 'next/head'
-import React from 'react';
-import styles from '../styles/Home.module.css'
-import part6Datas from "../data/part6.json"
-import part5Datas from "../data/part5.json"
+import React, { useEffect, useCallback } from 'react';
+import Link from 'next/link';
+import { useAuth } from '../auth';
 
-class Problems {
-  tag = []
-  question = ''
-  answer = ''
-  constructor(tag, question, answer) {
-    this.tag = tag
-    this.question = question
-    this.answer = answer
-  }
-}
+export default () => {
+  const { user } = useAuth();
 
-export default function Home() {
-  const [localProblemLists, setLocalProblemLists] = React.useState([...part6Datas])
-  const [partNumber, setPartNumber] = React.useState(6)
-  const [searchText, setSearchText] = React.useState("")
-
-  React.useEffect(() => {
-    if (partNumber === 5) {
-      setLocalProblemLists(part5Datas)
-    } else if (partNumber === 6) {
-      setLocalProblemLists(part6Datas)
-    }
-  }, [partNumber])
-
-  const getDatas = () => localProblemLists.filter(d => d.answer.toLowerCase().includes(searchText.toLowerCase()) || d.question.toLowerCase().includes(searchText.toLowerCase()))
-
-  const getTags = () => localProblemLists.reduce((accu, curr) => {
-    curr.tag.forEach(t => accu.add(t))
-    return accu
-  }, new Set())
-
-  const changePart = (partNumber) => {
-    setPartNumber(partNumber)
-  }
-
-  const doInit = () => {
-    setPartNumber(partNumber)
-  }
-  const doShuffle = () => {
-    let copyProblemList = [...localProblemLists]
-    const newProblems = []
-    for (let i = 0; i < localProblemLists.length; i++) {
-      const newIdx = parseInt((Math.random() * copyProblemList.length), 10)
-      newProblems.push(copyProblemList.splice(newIdx, 1)[0])
-    }
-    setLocalProblemLists(newProblems)
-  }
-  const doSearch = (e) => {
-    setSearchText(e.target.value)
-  }
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {doSearch(e)}
-  }
-  const hideElem = (i) => {
-    const newProblems = [...localProblemLists]
-    newProblems.splice(i, 1)
-    setLocalProblemLists(newProblems)
-  }
-  const filterKey = (e) => {
-    const newProblems = [...localProblemLists]
-    setLocalProblemLists(newProblems.filter(d => d.tag.includes(e.target.dataset.value)));
-  }
   return (
-    <div className={styles.container} onKeyDown={handleKeyDown}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div style={{ padding: '40px' }}>
+      <p>{`User ID: ${user ? user.uid : 'no user signed in'}`}</p>
 
-      <main className={styles.main}>
-        <div>
-          <button onClick={doInit}>Init</button>
-          <button onClick={doShuffle}>Shuffle</button>
-        </div>
-        <div>
-          <button onClick={e => changePart(5)}>Part5</button>
-          <button onClick={e => changePart(6)}>Part6</button>
-        </div>
-        <section className={styles.searches}>
-          <input onChange={doSearch} type="text"/>
-          <button>search</button>
-        </section>
-        <section className={styles.tags}>
-          {Array.from(getTags()).map(key => (
-            <div key={key} onClick={filterKey} data-value={key}>
-              {key}
-            </div>
-          ))}
-        </section>
-        <div className={styles.grid}>
-          {getDatas().map((d, i) => (
-            <div key={i} className={styles.card}>
-              <button onClick={() => hideElem(i)}>hide</button>
-              <div>
-                tags: {d.tag.toString()}
-              </div>
-              <h3 className={styles.question}>{d.question}</h3>
-              <p className={styles.answer}>{d.answer}</p>
-            </div>
-          ))}
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <p>
+        <Link href="/authenticated">
+          <a>Go to authenticated route</a>
+        </Link>
+      </p>
+      <p>
+        <Link href="/questions">
+          <a>Questions</a>
+        </Link>
+      </p>
+      <p>
+        <Link href="/login">
+          <a>Login</a>
+        </Link>
+      </p>
     </div>
-  )
-}
+  );
+};
