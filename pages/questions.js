@@ -49,11 +49,13 @@ export const getServerSideProps = async (ctx) => {
   }
 };
 
+const DEFAULT_PARTNUMBER = 5
+
 function Questions(
   props
 ) {
   const [localProblemLists, setLocalProblemLists] = useState(props.datas5)
-  const [partNumber, setPartNumber] = useState(6)
+  const [partNumber, setPartNumber] = useState(DEFAULT_PARTNUMBER)
   const [searchText, setSearchText] = useState("")
   const [results, setResults] = useState([])
 
@@ -62,13 +64,19 @@ function Questions(
       setLocalProblemLists(props.datas5)
     } else if (partNumber === 6) {
       setLocalProblemLists(props.datas6)
+    } else {
+      setLocalProblemLists(DEFAULT_PARTNUMBER)
     }
   }, [partNumber])
   const router = useRouter();
   console.log(props.datas)
 
   const changePart = (paramPart) => {
-    setPartNumber(paramPart)
+    if (!paramPart) {
+      setPartNumber(DEFAULT_PARTNUMBER)
+    } else {
+      setPartNumber(paramPart)
+    }
   }
   const doInit = () => {
     setPartNumber(partNumber)
