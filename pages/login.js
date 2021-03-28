@@ -31,6 +31,7 @@ export default (_props) => {
           />
         </div>
         <button
+          className={styles.button}
           onClick={async () => {
             await firebaseClient.auth().signInWithEmailAndPassword(email, pass);
             window.location.href = '/';

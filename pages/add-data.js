@@ -48,11 +48,27 @@ function AddData(
 
   async function submit() {
     const db = await firebaseClient.firestore()
+
+    const docData = await db.collection(`part${part}`).get()
+    const currentQuestion = question.trim()
+    const currentAnswer = answer.trim()
+    const datas = []
+    docData.forEach(d => datas.push({
+      ...d.data(),
+      id: d.id
+    }))
+    const found = datas.find(d => d.question === currentQuestion)
+    if (found) {
+      console.log("found = ", found)
+      alert("already exists");
+      return;
+    }
     db
       .collection(`part${part}`)
       .add({
-        question,
-        answer,
+        question: currentQuestion,
+        answer: currentAnswer,
+        added_date: new Date().toString()
       })
       .then(docRef => {
         console.log(docRef.id)
@@ -76,16 +92,18 @@ function AddData(
       </div>
       <div style={{margin: "10px"}}>
         <span>Question: </span>
-        <input
+        <textarea
           onChange={e => setQuestion(e.target.value)}
           value={question}
+          rows="4" cols="50"
         />
       </div>
       <div style={{margin: "10px"}}>
         <span>Answer: </span>
-        <input
+        <textarea
           onChange={e => setAnswer(e.target.value)}
           value={answer}
+          rows="10" cols="50"
         />
       </div>
 

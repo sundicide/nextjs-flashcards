@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import nookies from "nookies";
 import { useRouter } from 'next/router'
 import { firebaseAdmin } from "../firebaseAdmin";
@@ -57,9 +57,19 @@ function Questions(
   const [searchText, setSearchText] = useState("")
   const [results, setResults] = useState([])
 
+  useEffect(() => {
+    if (partNumber === 5) {
+      setLocalProblemLists(props.datas5)
+    } else if (partNumber === 6) {
+      setLocalProblemLists(props.datas6)
+    }
+  }, [partNumber])
   const router = useRouter();
   console.log(props.datas)
 
+  const changePart = (paramPart) => {
+    setPartNumber(paramPart)
+  }
   const doInit = () => {
     setPartNumber(partNumber)
   }
