@@ -1,0 +1,14 @@
+.root {
+  padding: 1rem;
+}
+.buttonWrapper {
+  margin: 1rem;
+}
+.buttonWrapper > button {
+  width: 150px;
+  margin: 0.5rem;
+}
+.body {
+  display: flex;
+  margin: auto;
+}

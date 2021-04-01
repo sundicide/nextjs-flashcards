@@ -24,6 +24,11 @@ export default () => {
           <a>Login</a>
         </Link>
       </p>
+      <p>
+        <Link href="/timer">
+          <a>Timer</a>
+        </Link>
+      </p>
     </div>
   );
 };

@@ -45,8 +45,10 @@ function AddData(
   const [part, setPart] = useState("6")
   const [question, setQuestion] = useState("")
   const [answer, setAnswer] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   async function submit() {
+    setIsLoading(true)
     const db = await firebaseClient.firestore()
 
     const docData = await db.collection(`part${part}`).get()
@@ -61,24 +63,28 @@ function AddData(
     if (found) {
       console.log("found = ", found)
       alert("already exists");
-      return;
+      setIsLoading(false)
+    } else {
+      db
+        .collection(`part${part}`)
+        .add({
+          question: currentQuestion,
+          answer: currentAnswer,
+          added_date: new Date().toString()
+        })
+        .then(docRef => {
+          console.log(docRef.id)
+          alert('good')
+          setQuestion("")
+          setAnswer("")
+        })
+        .catch(error => {
+          console.error("Error adding document: ", error)
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
     }
-    db
-      .collection(`part${part}`)
-      .add({
-        question: currentQuestion,
-        answer: currentAnswer,
-        added_date: new Date().toString()
-      })
-      .then(docRef => {
-        console.log(docRef.id)
-        alert('good')
-        setQuestion("")
-        setAnswer("")
-      })
-      .catch(error => {
-        console.error("Error adding document: ", error)
-      })
   }
 
   return (
@@ -108,7 +114,10 @@ function AddData(
       </div>
 
       <div>
-        <button onClick={() => submit()}>submit</button>
+        <button
+          disabled={isLoading}
+          onClick={() => submit()}
+        >submit</button>
       </div>
     </div>
   );
