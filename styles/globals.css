@@ -1,6 +1,6 @@
 html,
 body {
-  padding: 0;
+  background-color: #c3a97f;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -13,4 +13,38 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.icon {
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.root-wrapper {
+  max-width: 1280px;
+  display: grid;
+  margin: auto;
+  height: 100vh;
+}
+.root {
+  background: #ffffff;
+  box-shadow: 0 0 20px 20px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.backdrop {
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: none;
+}
+.backdrop.active {
+  display: block;
 }
