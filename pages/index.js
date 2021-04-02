@@ -14,21 +14,6 @@ export default () => {
           <a>Go to authenticated route</a>
         </Link>
       </p>
-      <p>
-        <Link href="/questions">
-          <a>Questions</a>
-        </Link>
-      </p>
-      <p>
-        <Link href="/login">
-          <a>Login</a>
-        </Link>
-      </p>
-      <p>
-        <Link href="/timer">
-          <a>Timer</a>
-        </Link>
-      </p>
     </div>
   );
 };

@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import nookies from "nookies";
 import { useRouter } from 'next/router'
 import { firebaseAdmin } from "../firebaseAdmin";
-import { firebaseClient } from "../firebaseClient";
-import styles from '../styles/Home.module.css'
-
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
+import styles from '../styles/Questions.module.css'
 
 export const getServerSideProps = async (ctx) => {
   try {
@@ -103,11 +100,11 @@ function Questions(
   return (
     <div className={styles.container} onKeyDown={handleKeyDown}>
       <main className={styles.main}>
-        <div>
+        <div className={styles.buttons}>
           <button onClick={doInit}>Init</button>
           <button onClick={doShuffle}>Shuffle</button>
         </div>
-        <div>
+        <div className={styles.buttons}>
           <button onClick={e => changePart(5)}>Part5</button>
           <button onClick={e => changePart(6)}>Part6</button>
         </div>

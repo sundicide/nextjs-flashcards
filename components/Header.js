@@ -12,9 +12,15 @@ export default function Header(props) {
 
   return (
     <div className={styles.root}>
-      <div>
+      <div className={styles.links}>
         <Link href="/" passHref>
           <FontAwesomeIcon className="icon" icon="home" />
+        </Link>
+        <Link href="/questions">
+          <span>Questions</span>
+        </Link>
+        <Link href="/timer">
+          <span>Timer</span>
         </Link>
       </div>
       <div className={styles.users}>
